@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles will be placed here */
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <div class="header-left">
+            <img src="images (1).png" alt="Logo" class="logo">
+            <h1 class="title">Inventory Management System</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for products..." onkeyup="searchItems()">
+        </div>
+    </div>
+
+    
+    <div class="container">
+        
+        <div id="createItemModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Create New Item</h2>
+                <input type="text" id="item-name" placeholder="Product Name" required />
+                <input type="text" id="item-details" placeholder="Product Details" required />
+                <input type="number" id="item-quantity" placeholder="Quantity" required />
+                <input type="number" id="item-price" placeholder="Price per Item" required />
+                <input type="date" id="item-date" required />
+                <button onclick="addItem()">Add Item</button>
+            </div>
+        </div>
+
+        <button class="open-modal-btn" onclick="openModal()">Create New Item</button>
+
+        
+        <table id="inventory-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Details</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Date Added</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
