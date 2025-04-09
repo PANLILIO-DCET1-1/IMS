@@ -15,7 +15,6 @@ body {
     text-align: center;
 }
 
-
 .header {
     display: flex;
     justify-content: space-between; 
@@ -163,4 +162,10 @@ button.edit-btn {
 
 button.edit-btn:hover {
     background-color: #ff8c00;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
