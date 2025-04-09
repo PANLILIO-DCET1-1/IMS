@@ -9,7 +9,6 @@ function closeModal() {
 }
 
 function addItem() {
-    
     const name = document.getElementById("item-name").value;
     const details = document.getElementById("item-details").value;
     const quantity = document.getElementById("item-quantity").value;
@@ -17,11 +16,9 @@ function addItem() {
     const date = document.getElementById("item-date").value;
     const image = document.getElementById("item-image").files[0];
 
-    
     if (name && details && quantity && price && date && image) {
         const imageURL = URL.createObjectURL(image);
-
-        const total = quantity * price; 
+        const total = quantity * price;
         const item = {
             name,
             details,
@@ -42,16 +39,21 @@ function addItem() {
         document.getElementById("item-image").value = '';
 
         closeModal();
-
         updateTable();
+
+        document.getElementById("successModal").style.display = "block";
     } else {
         alert("Please fill out all fields and upload an image.");
     }
 }
 
+function closeSuccessModal() {
+    document.getElementById("successModal").style.display = "none";
+}
+
 function updateTable() {
     const tableBody = document.querySelector("#inventory-table tbody");
-    tableBody.innerHTML = ""; 
+    tableBody.innerHTML = "";
 
     inventory.forEach((item, index) => {
         const row = document.createElement("tr");
@@ -83,7 +85,6 @@ function editItem(index) {
     document.getElementById("item-price").value = item.price;
     document.getElementById("item-date").value = item.date;
 
-
     openModal();
 
     const addButton = document.querySelector("button[onclick='addItem()']");
@@ -91,7 +92,6 @@ function editItem(index) {
         updateItem(index);
     };
 }
-
 
 function updateItem(index) {
     const name = document.getElementById("item-name").value;
@@ -102,10 +102,9 @@ function updateItem(index) {
     const image = document.getElementById("item-image").files[0];
 
     if (name && details && quantity && price && date) {
-        const imageURL = image ? URL.createObjectURL(image) : inventory[index].imageURL
+        const imageURL = image ? URL.createObjectURL(image) : inventory[index].imageURL;
         const total = quantity * price;
 
-        
         inventory[index] = {
             name,
             details,
@@ -116,20 +115,15 @@ function updateItem(index) {
             imageURL
         };
 
-        
         closeModal();
-
-        
         updateTable();
     } else {
         alert("Please fill out all fields.");
     }
 }
 
-
 function deleteItem(index) {
     inventory.splice(index, 1);
-
     updateTable();
 }
 
